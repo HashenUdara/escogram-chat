@@ -57,7 +57,7 @@ const Layout = async ({ children }: LayoutProps) => {
           <SideBarWrapper>
             <SidebarChatList sessionId={session.user.id} friends={friends} />
           </SideBarWrapper>
-          <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-9">
+          <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 lg:col-span-9">
             {children}
           </div>
         </main>

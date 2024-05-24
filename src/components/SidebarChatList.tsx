@@ -7,6 +7,8 @@ import { FC, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import UnseenChatToast from "./UnseenChatToast";
 import Image from "next/image";
+import { ScrollArea } from "./ui/scroll-area";
+import Link from "next/link";
 interface SidebarChatListProps {
   friends: User[];
   sessionId: string;
@@ -75,44 +77,48 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
   }, [pathname]);
 
   return (
-    <ul role="list" className="max-h-[25rem] overflow-y-auto -mx-2 space-y-1">
-      {activeChats.sort().map((friend) => {
-        const unseenMessagesCount = unseenMessages.filter((unseenMsg) => {
-          return unseenMsg.senderId === friend.id;
-        }).length;
+    <ScrollArea className="h-[calc(100vh-150px)] w-full -mx-2 space-y-1">
+      <ul role="list">
+        {activeChats.sort().map((friend) => {
+          const unseenMessagesCount = unseenMessages.filter((unseenMsg) => {
+            return unseenMsg.senderId === friend.id;
+          }).length;
 
-        return (
-          <li key={friend.id}>
-            <a
-              href={`/dashboard/chat/${chatHrefConstructor(
-                sessionId,
-                friend.id
-              )}`}
-              className="text-gray-700 hover:text-indigo-600 hover:bg-gray-50 group flex items-center gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-            >
-              {friend.name}
-              <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
-                <div className="relative h-6 w-6">
-                  <Image
-                    referrerPolicy="no-referrer"
-                    className="rounded-full"
-                    alt={`${friend.name} profile picture`}
-                    src={friend.image}
-                    fill
-                  />
+          return (
+            <li key={friend.id}>
+              <a
+                href={`/dashboard/chat/${chatHrefConstructor(
+                  sessionId,
+                  friend.id
+                )}`}
+                className=" text-foreground  hover:bg-muted group justify-between flex items-center gap-x-3 rounded-lg p-2 text-sm leading-6 font-semibold"
+              >
+                <div className=" flex  items-center">
+                  <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-2">
+                    <div className="relative  size-10">
+                      <Image
+                        referrerPolicy="no-referrer"
+                        className="rounded-full"
+                        alt={`${friend.name} profile picture`}
+                        src={friend.image}
+                        fill
+                      />
+                    </div>
+                  </div>
+                  {friend.name}
                 </div>
-              </div>
 
-              {unseenMessagesCount > 0 ? (
-                <div className="bg-indigo-600 font-medium text-xs text-white w-4 h-4 rounded-full flex justify-center items-center">
-                  {unseenMessagesCount}
-                </div>
-              ) : null}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
+                {unseenMessagesCount > 0 ? (
+                  <div className=" bg-primary font-medium m-2 text-xs text-white size-4 rounded-full flex justify-center items-center">
+                    {unseenMessagesCount}
+                  </div>
+                ) : null}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </ScrollArea>
   );
 };
 

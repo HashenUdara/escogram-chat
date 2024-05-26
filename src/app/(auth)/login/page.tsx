@@ -4,7 +4,6 @@ import { FC, useState } from "react";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
 
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import EscogramLogo from "@/../public/img/logo-sec.svg";
+import { Button } from "@/components/ui/button";
 const Page: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

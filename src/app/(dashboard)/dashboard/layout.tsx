@@ -52,7 +52,7 @@ const Layout = async ({ children }: LayoutProps) => {
     <div className="grid h-screen w-full pl-[56px]">
       <SideNav />
       <div className="flex flex-col">
-        <Header />
+        <Header session={session} />
         <main className="grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-12">
           <SideBarWrapper>
             <SidebarChatList sessionId={session.user.id} friends={friends} />

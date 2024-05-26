@@ -41,20 +41,20 @@ const page = async ({}) => {
         friendsWithLastMessage.map((friend) => (
           <div
             key={friend.id}
-            className="relative  hover:bg-muted/90 bg- p-3 rounded-xl"
+            className="relative  flex hover:bg-muted/90 bg- p-3 rounded-xl"
           >
-            <div className="absolute right-4 inset-y-0 flex items-center">
+            {/* <div className="absolute right-4 inset-y-0 flex items-center">
               <ChevronRight className="h-7 w-7  text-muted-foreground" />
-            </div>
+            </div> */}
 
             <Link
               href={`/dashboard/chat/${chatHrefConstructor(
                 session.user.id,
                 friend.id
               )}`}
-              className="relative sm:flex"
+              className="relative flex"
             >
-              <div className="mb-4 flex items-center  flex-shrink-0 sm:mb-0 sm:mr-4">
+              <div className="mb-4 flex items-center  flex-shrink-0 sm:mb-0 mr-4">
                 <div className="relative size-12">
                   <Image
                     referrerPolicy="no-referrer"

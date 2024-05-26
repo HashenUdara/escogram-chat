@@ -17,6 +17,16 @@ import {
   Turtle,
 } from "lucide-react";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -53,10 +63,109 @@ export default function Dashboard() {
     <div className="grid h-screen w-full pl-[56px]">
       <SideNav />
       <div className="flex flex-col">
-        <Header />
         <main className="grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3">
           <SideBarWrapper>djd</SideBarWrapper>
           <div className="relative flex h-full min-h-[50vh] flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle>Recent Sales</CardTitle>
+              </CardHeader>
+              <CardContent className="grid gap-8">
+                <div className="flex items-center gap-4">
+                  <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src="/avatars/01.png" alt="Avatar" />
+                    <AvatarFallback>OM</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Olivia Martin
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      olivia.martin@email.com
+                    </p>
+                  </div>
+                  <div className="ml-auto font-medium">+$1,999.00</div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src="/avatars/02.png" alt="Avatar" />
+                    <AvatarFallback>JL</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Jackson Lee
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      jackson.lee@email.com
+                    </p>
+                  </div>
+                  <div className="ml-auto font-medium">+$39.00</div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src="/avatars/03.png" alt="Avatar" />
+                    <AvatarFallback>IN</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Isabella Nguyen
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      isabella.nguyen@email.com
+                    </p>
+                  </div>
+                  <div className="ml-auto font-medium">+$299.00</div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src="/avatars/04.png" alt="Avatar" />
+                    <AvatarFallback>WK</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      William Kim
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      will@email.com
+                    </p>
+                  </div>
+                  <div className="ml-auto font-medium">+$99.00</div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src="/avatars/05.png" alt="Avatar" />
+                    <AvatarFallback>SD</AvatarFallback>
+                  </Avatar>
+                  <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                      Sofia Davis
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      sofia.davis@email.com
+                    </p>
+                  </div>
+                  <div className="ml-auto font-medium">+$39.00</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Store Name</CardTitle>
+                <CardDescription>
+                  Used to identify your store in the marketplace.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form>
+                  <Input placeholder="Store Name" />
+                </form>
+              </CardContent>
+              <CardFooter className="border-t px-6 py-4">
+                <Button>Save</Button>
+              </CardFooter>
+            </Card>
+
             {/* <Badge variant="outline" className="absolute right-3 top-3">
               Output
             </Badge>

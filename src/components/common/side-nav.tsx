@@ -4,7 +4,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import {
   LifeBuoy,
   MessageCircle,
@@ -16,6 +16,8 @@ import {
 
 import EscogramLogo from "@/../public/img/logo.svg";
 import Image from "next/image";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 const SideNav = () => {
   return (
     <aside className="inset-y fixed  left-0 z-20 flex h-full flex-col border-r">
@@ -29,14 +31,16 @@ const SideNav = () => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-lg"
+              <Link
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "rounded-lg"
+                )}
                 aria-label="Models"
+                href={"/dashboard"}
               >
                 <MessageCircle className="size-5" />
-              </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
               Chats
@@ -44,29 +48,16 @@ const SideNav = () => {
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-lg"
+              <Link
+                className={cn(
+                  buttonVariants({ variant: "ghost", size: "icon" }),
+                  "rounded-lg"
+                )}
                 aria-label="API"
+                href={"/dashboard/add"}
               >
                 <UserRoundPlusIcon className="size-5" />
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="right" sideOffset={5}>
-              Friends
-            </TooltipContent>
-          </Tooltip>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-lg"
-                aria-label="Documentation"
-              >
-                <Users2 className="size-5" />
-              </Button>
+              </Link>
             </TooltipTrigger>
             <TooltipContent side="right" sideOffset={5}>
               Friends

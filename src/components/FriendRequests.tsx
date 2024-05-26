@@ -77,39 +77,37 @@ const FriendRequests: FC<FriendRequestsProps> = ({
         <p className="text-sm text-zinc-500">Nothing to show here...</p>
       ) : (
         friendRequests.map((request) => (
-          <>
-            <div key={request.senderId} className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src={request.senderImg!} alt="Avatar" />
-                <AvatarFallback>OM</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  {request.senderName}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {request.senderEmail}
-                </p>
-              </div>
-              <div className="ml-auto font-medium">
-                <button
-                  onClick={() => acceptFriend(request.senderId)}
-                  aria-label="accept friend"
-                  className="w-8 h-8 bg-indigo-600 hover:bg-indigo-700 grid place-items-center rounded-full transition hover:shadow-md"
-                >
-                  <Check className="font-semibold text-white w-3/4 h-3/4" />
-                </button>
-
-                <button
-                  onClick={() => denyFriend(request.senderId)}
-                  aria-label="deny friend"
-                  className="w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md"
-                >
-                  <X className="font-semibold text-white w-3/4 h-3/4" />
-                </button>
-              </div>
+          <div key={request.senderId} className="flex items-center gap-4">
+            <Avatar className="hidden h-9 w-9 sm:flex">
+              <AvatarImage src={request.senderImg!} alt="Avatar" />
+              <AvatarFallback>OM</AvatarFallback>
+            </Avatar>
+            <div className="grid gap-1">
+              <p className="text-sm font-medium leading-none">
+                {request.senderName}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {request.senderEmail}
+              </p>
             </div>
-          </>
+            <div className="ml-auto font-medium">
+              <button
+                onClick={() => acceptFriend(request.senderId)}
+                aria-label="accept friend"
+                className="w-8 h-8 bg-indigo-600 hover:bg-indigo-700 grid place-items-center rounded-full transition hover:shadow-md"
+              >
+                <Check className="font-semibold text-white w-3/4 h-3/4" />
+              </button>
+
+              <button
+                onClick={() => denyFriend(request.senderId)}
+                aria-label="deny friend"
+                className="w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md"
+              >
+                <X className="font-semibold text-white w-3/4 h-3/4" />
+              </button>
+            </div>
+          </div>
         ))
       )}
     </>

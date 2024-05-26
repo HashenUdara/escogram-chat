@@ -15,6 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import AddFriendButton from "@/components/AddFriendButton";
 const page = async () => {
   const session = await getServerSession(authOptions);
   if (!session) notFound();
@@ -38,10 +39,10 @@ const page = async () => {
   );
 
   return (
-    <>
-      <Card>
+    <div className=" grid  grid-cols-12 ">
+      <Card className=" m-4 bg-transparent border-none shadow-none col-span-7">
         <CardHeader>
-          <CardTitle>Recent Sales</CardTitle>
+          <CardTitle>Friend Requests</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-8">
           <div className="flex items-center gap-4">
@@ -112,23 +113,8 @@ const page = async () => {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Store Name</CardTitle>
-          <CardDescription>
-            Used to identify your store in the marketplace.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <Input placeholder="Store Name" />
-          </form>
-        </CardContent>
-        <CardFooter className="border-t px-6 py-4">
-          <Button>Save</Button>
-        </CardFooter>
-      </Card>
-    </>
+      <AddFriendButton />
+    </div>
   );
 };
 

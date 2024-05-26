@@ -54,7 +54,7 @@ const SideNav = () => {
                   "rounded-lg"
                 )}
                 aria-label="API"
-                href={"/dashboard/add"}
+                href={"/dashboard/requests"}
               >
                 <UserRoundPlusIcon className="size-5" />
               </Link>

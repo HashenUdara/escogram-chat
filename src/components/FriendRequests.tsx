@@ -3,10 +3,11 @@
 import { pusherClient } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";
 import axios from "axios";
-import { Check, UserPlus, X } from "lucide-react";
+import { Check, Trash2, UserPlus, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Button } from "./ui/button";
 
 interface FriendRequestsProps {
   incomingFriendRequests: IncomingFriendRequest[];
@@ -90,22 +91,22 @@ const FriendRequests: FC<FriendRequestsProps> = ({
                 {request.senderEmail}
               </p>
             </div>
-            <div className="ml-auto font-medium">
-              <button
-                onClick={() => acceptFriend(request.senderId)}
+            <div className="ml-auto flex items-center   space-x-2">
+              <Button
                 aria-label="accept friend"
-                className="w-8 h-8 bg-indigo-600 hover:bg-indigo-700 grid place-items-center rounded-full transition hover:shadow-md"
+                onClick={() => acceptFriend(request.senderId)}
+                variant={"secondary"}
               >
-                <Check className="font-semibold text-white w-3/4 h-3/4" />
-              </button>
-
-              <button
+                Accept
+              </Button>
+              <Button
                 onClick={() => denyFriend(request.senderId)}
                 aria-label="deny friend"
-                className="w-8 h-8 bg-red-600 hover:bg-red-700 grid place-items-center rounded-full transition hover:shadow-md"
+                variant={"ghost"}
+                size={"icon"}
               >
-                <X className="font-semibold text-white w-3/4 h-3/4" />
-              </button>
+                <Trash2 className=" size-4" />{" "}
+              </Button>
             </div>
           </div>
         ))

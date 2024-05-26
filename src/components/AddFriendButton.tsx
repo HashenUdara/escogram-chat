@@ -61,7 +61,7 @@ const AddFriendButton: FC<AddFriendButtonProps> = ({}) => {
   };
 
   return (
-    <Card className="  rounded-xl m-4 h-fit  md:col-span-5">
+    <Card className="  rounded-xl  m-2 md:m-4 h-fit  md:col-span-5">
       <CardHeader>
         <CardTitle>Add a friend</CardTitle>
         <CardDescription>

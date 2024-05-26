@@ -41,12 +41,12 @@ const page = async () => {
   return (
     <div className=" md:grid  grid-cols-12 ">
       <Card className=" m-4 bg-transparent border-none shadow-none  md:col-span-7">
-        <CardHeader>
+        <CardHeader className="   p-0 pb-4  md:p-6 ">
           <CardTitle className=" text-xl md:text-2xl">
             Friend Requests
           </CardTitle>
         </CardHeader>
-        <CardContent className="grid gap-8">
+        <CardContent className="grid gap-8    ">
           <FriendRequests
             incomingFriendRequests={incomingFriendRequests}
             sessionId={session.user.id}

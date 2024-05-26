@@ -78,20 +78,26 @@ const FriendRequests: FC<FriendRequestsProps> = ({
         <p className="text-sm text-zinc-500">Nothing to show here...</p>
       ) : (
         friendRequests.map((request) => (
-          <div key={request.senderId} className="flex items-center gap-4">
-            <Avatar className="hidden h-9 w-9 sm:flex">
-              <AvatarImage src={request.senderImg!} alt="Avatar" />
-              <AvatarFallback>OM</AvatarFallback>
-            </Avatar>
-            <div className="grid gap-1">
-              <p className="text-xs md:text-sm font-medium leading-none">
-                {request.senderName}
-              </p>
-              <p className="text-xs md:text-sm  text-muted-foreground">
-                {request.senderEmail}
-              </p>
+          <div
+            key={request.senderId}
+            className=" md:flex bg-muted/50 items-center gap-4 p-0  md:p-4 rounded-xl"
+          >
+            <div className="flex items-center gap-4">
+              <Avatar className=" h-9 w-9 flex">
+                <AvatarImage src={request.senderImg!} alt="Avatar" />
+                <AvatarFallback>OM</AvatarFallback>
+              </Avatar>
+              <div className="grid gap-1">
+                <p className="text-sm font-medium leading-none">
+                  {request.senderName}
+                </p>
+                <p className="text-sm  text-muted-foreground">
+                  {request.senderEmail}
+                </p>
+              </div>
             </div>
-            <div className="ml-auto flex items-center   space-x-2">
+
+            <div className="md:ml-auto ml-12 mt-2  md:mt-0 flex items-center   space-x-2">
               <Button
                 aria-label="accept friend"
                 onClick={() => acceptFriend(request.senderId)}

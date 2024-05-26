@@ -13,8 +13,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import AddFriendButton from "@/components/AddFriendButton";
 const page = async () => {
   const session = await getServerSession(authOptions);
@@ -41,10 +39,12 @@ const page = async () => {
   );
 
   return (
-    <div className=" grid  grid-cols-12 ">
-      <Card className=" m-4 bg-transparent border-none shadow-none col-span-7">
+    <div className=" md:grid  grid-cols-12 ">
+      <Card className=" m-4 bg-transparent border-none shadow-none  md:col-span-7">
         <CardHeader>
-          <CardTitle>Friend Requests</CardTitle>
+          <CardTitle className=" text-xl md:text-2xl">
+            Friend Requests
+          </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-8">
           <FriendRequests

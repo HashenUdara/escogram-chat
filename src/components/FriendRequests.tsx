@@ -84,10 +84,10 @@ const FriendRequests: FC<FriendRequestsProps> = ({
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div className="grid gap-1">
-              <p className="text-sm font-medium leading-none">
+              <p className="text-xs md:text-sm font-medium leading-none">
                 {request.senderName}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm  text-muted-foreground">
                 {request.senderEmail}
               </p>
             </div>

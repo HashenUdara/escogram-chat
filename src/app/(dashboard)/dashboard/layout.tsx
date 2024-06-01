@@ -1,7 +1,8 @@
 import { Icon, Icons } from "@/components/Icons";
 import SignOutButton from "@/components/SignOutButton";
 import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -35,7 +36,7 @@ const sidebarOptions: SidebarOption[] = [
 ];
 
 const Layout = async ({ children }: LayoutProps) => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(getKindeServerSession);
   if (!session) notFound();
 
   const friends = await getFriendsByUserId(session.user.id);

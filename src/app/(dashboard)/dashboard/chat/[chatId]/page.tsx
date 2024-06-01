@@ -3,7 +3,8 @@ import Messages from "@/components/Messages";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { messageArrayValidator } from "@/lib/validations/message";
-import { getServerSession } from "next-auth";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: { chatId: string };
 }) {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(getKindeServerSession);
   if (!session) notFound();
   const [userId1, userId2] = params.chatId.split("--");
   const { user } = session;
@@ -57,7 +58,7 @@ async function getChatMessages(chatId: string) {
 
 const page = async ({ params }: PageProps) => {
   const { chatId } = params;
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(getKindeServerSession);
   if (!session) notFound();
 
   const { user } = session;

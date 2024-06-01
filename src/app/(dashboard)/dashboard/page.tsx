@@ -3,15 +3,14 @@ import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
 import { chatHrefConstructor } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
-// import { getServerSession } from "next-auth";
+// import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+import { db } from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-import { db } from "@/lib/db";
-import { getServerSession } from "@/lib/auth-handler";
 const page = async ({}) => {
   const {
     getAccessToken,
@@ -29,27 +28,11 @@ const page = async ({}) => {
     isAuthenticated,
   } = getKindeServerSession();
 
-  console.log(await getAccessToken());
-  // console.log(await getBooleanFlag("bflag", false));
-  // console.log(await getFlag("flag", "x", "s"));
-  // console.log(await getIntegerFlag("iflag", 99));
-  // console.log(await getOrganization());
-  // console.log(await getPermission("eat:chips"));
-  // console.log(await getPermissions());
-  // console.log(await getStringFlag("sflag", "test"));
-  // console.log(await getUser());
-  // console.log(await getUserOrganizations());
-  // console.log(await isAuthenticated());
   const data = await getUser();
   const email = data?.email;
   const userid = data?.id;
   const img = data?.picture;
   const name = data?.family_name;
-
-  const session = await getServerSession(getKindeServerSession);
-
-  db.sadd(`user:email:${email}`, userid);
-
   const userdata = {
     email: email,
     emailVerified: null,
@@ -57,8 +40,11 @@ const page = async ({}) => {
     image: img,
     name: name,
   };
+  db.set(`user:email:${email}`, userid);
 
-  db.sadd(`user:${userid}`, userdata);
+  db.set(`user:${userid}`, userdata);
+
+  const session = await getServerSession(getKindeServerSession);
 
   console.log("Sessionnnnnnn", session);
 

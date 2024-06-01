@@ -15,7 +15,7 @@ const getServerSession = async (getKindeServerSession: any) => {
     isAuthenticated,
   } = getKindeServerSession();
 
-  console.log(await getAccessToken());
+  // console.log(await getAccessToken());
   // console.log(await getBooleanFlag("bflag", false));
   // console.log(await getFlag("flag", "x", "s"));
   // console.log(await getIntegerFlag("iflag", 99));
@@ -37,7 +37,7 @@ const getServerSession = async (getKindeServerSession: any) => {
       id: userid as string,
       name: name as string,
       email: email as string,
-      picture: img as string,
+      image: img as string,
     },
   };
 };

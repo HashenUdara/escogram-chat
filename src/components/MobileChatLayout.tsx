@@ -17,7 +17,7 @@ import { Button, buttonVariants } from "./ui/button";
 
 interface MobileChatLayoutProps {
   friends: User[];
-  session: Session;
+  session: any;
   sidebarOptions: SidebarOption[];
   unseenRequestCount: number;
 }

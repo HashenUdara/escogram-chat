@@ -1,12 +1,13 @@
 import FriendRequests from "@/components/FriendRequests";
 import { fetchRedis } from "@/helpers/redis";
 import { authOptions } from "@/lib/auth";
-import { getServerSession } from "next-auth";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getServerSession } from "@/lib/auth-handler";
 import { notFound } from "next/navigation";
 import { FC } from "react";
 
 const page = async () => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(getKindeServerSession);
   if (!session) notFound();
 
   // ids of people who sent current logged in user a friend requests

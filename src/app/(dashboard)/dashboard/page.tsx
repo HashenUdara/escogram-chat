@@ -1,15 +1,15 @@
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import { fetchRedis } from "@/helpers/redis";
-import { authOptions } from "@/lib/auth";
 import { chatHrefConstructor } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const page = async ({}) => {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession(getKindeServerSession);
+
   if (!session) notFound();
 
   const friends = await getFriendsByUserId(session.user.id);

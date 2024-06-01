@@ -10,14 +10,14 @@ import SignOutButton from "./SignOutButton";
 
 import FriendRequestSidebarOptions from "./FriendRequestSidebarOptions";
 import SidebarChatList from "./SidebarChatList";
-import { Session } from "next-auth";
+
 import { SidebarOption } from "@/types/typings";
 import { usePathname } from "next/navigation";
 import { Button, buttonVariants } from "./ui/button";
 
 interface MobileChatLayoutProps {
   friends: User[];
-  session: Session;
+  session: any;
   sidebarOptions: SidebarOption[];
   unseenRequestCount: number;
 }
@@ -166,7 +166,7 @@ const MobileChatLayout: FC<MobileChatLayoutProps> = ({
                                 </div>
                               </div>
 
-                              <SignOutButton className="h-full aspect-square" />
+                              <SignOutButton />
                             </li>
                           </ul>
                         </nav>

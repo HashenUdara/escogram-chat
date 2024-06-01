@@ -281,7 +281,7 @@ const getServerSession = async (getKindeServerSession: {
   const { getUser, isAuthenticated } = getKindeServerSession();
 
   if (!(await isAuthenticated())) {
-    redirect("/login");
+    redirect("/");
   }
   const data = await getUser();
   const email = data?.email || "";

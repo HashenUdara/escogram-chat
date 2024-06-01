@@ -3,7 +3,6 @@ import { Button } from "../ui/button";
 import { CircleUser, Share } from "lucide-react";
 import { ModeToggle } from "../theme-toggler";
 import Image from "next/image";
-import { Session } from "next-auth";
 import SignOutButton from "../SignOutButton";
 import {
   DropdownMenu,

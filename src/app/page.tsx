@@ -1,8 +1,6 @@
 "use client";
 
 import { FC, useState } from "react";
-import { signIn } from "next-auth/react";
-import { toast } from "react-hot-toast";
 
 import {
   Card,
@@ -11,12 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import Image from "next/image";
 import EscogramLogo from "@/../public/img/logo-sec.svg";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
+import { buttonVariants } from "@/components/ui/button";
+import {
+  RegisterLink,
+  LoginLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
 const Page: FC = () => {
   return (
     <div className=" flex   h-screen w-full items-center justify-center">
@@ -28,7 +28,7 @@ const Page: FC = () => {
         />
         <Card className="mx-auto  w-80 md:w-96">
           <CardHeader>
-            <CardTitle className="text-2xl">Welcome Back</CardTitle>
+            <CardTitle className="text-2xl">Hey there!</CardTitle>
             <CardDescription>
               Sign in to your account to continue
             </CardDescription>

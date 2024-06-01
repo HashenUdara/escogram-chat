@@ -1,7 +1,6 @@
 import ChatInput from "@/components/ChatInput";
 import Messages from "@/components/Messages";
 import { fetchRedis } from "@/helpers/redis";
-import { authOptions } from "@/lib/auth";
 import { messageArrayValidator } from "@/lib/validations/message";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getServerSession } from "@/lib/auth-handler";

@@ -1,4 +1,3 @@
-import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getServerSession } from "@/lib/auth-handler";

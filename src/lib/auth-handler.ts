@@ -295,13 +295,7 @@ const getServerSession = async (getKindeServerSession: {
     name: name,
   };
   const isUser = (await fetchRedis("get", `user:email:${email}`)) as 0 | 1;
-  console.log("hloremsdhsbdsdsndjsdnsdsdsnhdensjdnewjndendneujdnujenu", isUser);
   if (!isUser) {
-    console.log(
-      "loremsdhsbdsdsndjsdnsdsdsnhdensjdnewjndendneujdnujenu",
-      isUser
-    );
-
     db.set(`user:email:${email}`, userid);
 
     db.set(`user:${userid}`, userdata);

@@ -1,52 +1,14 @@
 import { getFriendsByUserId } from "@/helpers/get-friends-by-user-id";
 import { fetchRedis } from "@/helpers/redis";
-import { authOptions } from "@/lib/auth";
 import { chatHrefConstructor } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
-// import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { db } from "@/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 const page = async ({}) => {
-  const {
-    getAccessToken,
-    getBooleanFlag,
-    getFlag,
-    getIdToken,
-    getIntegerFlag,
-    getOrganization,
-    getPermission,
-    getPermissions,
-    getRoles,
-    getStringFlag,
-    getUser,
-    getUserOrganizations,
-    isAuthenticated,
-  } = getKindeServerSession();
-
-  const data = await getUser();
-  const email = data?.email;
-  const userid = data?.id;
-  const img = data?.picture;
-  const name = data?.family_name;
-  const userdata = {
-    email: email,
-    emailVerified: null,
-    id: userid,
-    image: img,
-    name: name,
-  };
-  db.set(`user:email:${email}`, userid);
-
-  db.set(`user:${userid}`, userdata);
-
   const session = await getServerSession(getKindeServerSession);
-
-  console.log("Sessionnnnnnn", session);
 
   if (!session) notFound();
 

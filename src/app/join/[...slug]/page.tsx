@@ -2,6 +2,7 @@ import { fetchRedis } from "@/helpers/redis";
 import { db } from "@/lib/db";
 import { pusherServer } from "@/lib/pusher";
 import { toPusherKey } from "@/lib/utils";
+import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const userId = decodeURIComponent(params.slug[0]);
@@ -60,5 +61,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   await db.sadd(`user:${idToAdd}:incoming_friend_requests`, userId);
 
-  return <div>My Post: {params.slug}</div>;
+  redirect("/dashboard");
 }

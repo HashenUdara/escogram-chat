@@ -1,7 +1,7 @@
 "use client";
 
 import { pusherClient } from "@/lib/pusher";
-import { chatHrefConstructor, toPusherKey } from "@/lib/utils";
+import { chatHrefConstructor, getInitials, toPusherKey } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -9,6 +9,7 @@ import UnseenChatToast from "./UnseenChatToast";
 import Image from "next/image";
 import { ScrollArea } from "./ui/scroll-area";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 interface SidebarChatListProps {
   friends: User[];
   sessionId: string;
@@ -95,15 +96,15 @@ const SidebarChatList: FC<SidebarChatListProps> = ({ friends, sessionId }) => {
               >
                 <div className=" flex  items-center">
                   <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-2">
-                    <div className="relative  size-10">
-                      <Image
-                        referrerPolicy="no-referrer"
-                        className="rounded-full"
+                    <Avatar className=" relative h-9 w-9 flex">
+                      <AvatarImage
                         alt={`${friend.name} profile picture`}
                         src={friend.image}
-                        fill
                       />
-                    </div>
+                      <AvatarFallback>
+                        {getInitials(friend.name)}
+                      </AvatarFallback>
+                    </Avatar>
                   </div>
                   {friend.name}
                 </div>

@@ -6,6 +6,8 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { getServerSession } from "@/lib/auth-handler";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getInitials } from "@/lib/utils";
 
 // The following generateMetadata functiion was written after the video and is purely optional
 export async function generateMetadata({
@@ -83,15 +85,13 @@ const page = async ({ params }: PageProps) => {
       <div className="flex sm:items-center  rounded-t-xl justify-between p-3  bg-muted/90">
         <div className="relative flex items-center space-x-4">
           <div className="relative">
-            <div className="relative w-8 sm:w-12 h-8 sm:h-12">
-              <Image
-                fill
-                referrerPolicy="no-referrer"
-                src={chatPartner.image}
+            <Avatar className=" h-9 w-9 flex">
+              <AvatarImage
+                src={chatPartner.image!}
                 alt={`${chatPartner.name} profile picture`}
-                className="rounded-full"
               />
-            </div>
+              <AvatarFallback>{getInitials(chatPartner.name!)}</AvatarFallback>
+            </Avatar>
           </div>
 
           <div className="flex flex-col leading-tight">
@@ -112,6 +112,7 @@ const page = async ({ params }: PageProps) => {
         sessionImg={session.user.image}
         sessionId={session.user.id}
         initialMessages={initialMessages}
+        sessionUserName={session.user.name}
       />
       <ChatInput chatId={chatId} chatPartner={chatPartner} />
     </div>

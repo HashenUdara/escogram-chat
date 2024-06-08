@@ -1,7 +1,7 @@
 "use client";
 
 import { pusherClient } from "@/lib/pusher";
-import { toPusherKey } from "@/lib/utils";
+import { getInitials, toPusherKey } from "@/lib/utils";
 import axios from "axios";
 import { Check, Trash2, UserPlus, X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -85,7 +85,9 @@ const FriendRequests: FC<FriendRequestsProps> = ({
             <div className="flex items-center gap-4">
               <Avatar className=" h-9 w-9 flex">
                 <AvatarImage src={request.senderImg!} alt="Avatar" />
-                <AvatarFallback>OM</AvatarFallback>
+                <AvatarFallback>
+                  {getInitials(request.senderName!)}
+                </AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-medium leading-none">

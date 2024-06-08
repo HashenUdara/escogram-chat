@@ -1,11 +1,12 @@
 "use client";
 
 import { pusherClient } from "@/lib/pusher";
-import { cn, toPusherKey } from "@/lib/utils";
+import { cn, getInitials, toPusherKey } from "@/lib/utils";
 import { Message } from "@/lib/validations/message";
 import { format } from "date-fns";
 import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 interface MessagesProps {
   initialMessages: Message[];
@@ -13,6 +14,7 @@ interface MessagesProps {
   chatId: string;
   sessionImg: string | null | undefined;
   chatPartner: User;
+  sessionUserName: string;
 }
 
 const Messages: FC<MessagesProps> = ({
@@ -21,6 +23,7 @@ const Messages: FC<MessagesProps> = ({
   chatId,
   chatPartner,
   sessionImg,
+  sessionUserName,
 }) => {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
 
@@ -101,15 +104,21 @@ const Messages: FC<MessagesProps> = ({
                   invisible: hasNextMessageFromSameUser,
                 })}
               >
-                <Image
-                  fill
-                  src={
-                    isCurrentUser ? (sessionImg as string) : chatPartner.image
-                  }
-                  alt="Profile picture"
-                  referrerPolicy="no-referrer"
-                  className="rounded-full"
-                />
+                <Avatar className=" h-9 w-9 flex">
+                  <AvatarImage
+                    src={
+                      isCurrentUser ? (sessionImg as string) : chatPartner.image
+                    }
+                    alt="Avatar"
+                  />
+                  <AvatarFallback>
+                    {getInitials(
+                      isCurrentUser
+                        ? (sessionUserName as string)
+                        : chatPartner.name
+                    )}
+                  </AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </div>
